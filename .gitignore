@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+daily_summary.json
+llm_request.json
+llm_result_mock.json
+llm_result.json
+current_user.json
