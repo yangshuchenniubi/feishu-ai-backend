@@ -103,6 +103,11 @@ def build_user_prompt(summary):
         ensure_ascii=False,
         indent=2,
     )
+    schema_json = json.dumps(
+        OUTPUT_SCHEMA,
+        ensure_ascii=False,
+        indent=2,
+    )
 
     return f"""
 请分析下面的工作日志材料。
@@ -114,6 +119,11 @@ def build_user_prompt(summary):
 4. 引用成果或风险时，填写对应的 source_record_id。
 5. 输出结果必须符合指定 JSON Schema。
 6. confirmation_status 必须是 pending_confirmation。
+
+必须严格按照下面的 JSON Schema 输出，所有 required 字段都必须出现；
+没有成果或风险时，对应字段也要返回空数组：
+
+{schema_json}
 
 工作日志材料：
 
